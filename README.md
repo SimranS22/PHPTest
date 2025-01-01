@@ -1,47 +1,57 @@
-# Codespace PHP
+# TSFBANKING - A Basic Banking System
 
-This repository is ment to help you get started with PHP development environment in GitHub Codespaces or as local [DevContainer](https://containers.dev/). The environment will provide a PHP server, a running MySQL server, a database web admin tool [adminer](https://www.adminer.org/) running and tasks, launchers and setting setup for Code. DB credentials are to be found in the .env file and also used in the sample index.php to connect to the DB as a test.
+The 'Basic Banking System' is a Web-Development Internship Project (Task #1) as part of GRIP (Graduate Rotational Internship Program) @ The Sparks Foundation.
 
-Push the button below to create a new GitHub Codespace with this repository as template.
+## Project Description
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?template_repository=hilli/codespace-php)
+### Technologies Used:
+- **Front-end**: HTML, CSS, JavaScript, Bootstrap
+- **Back-end**: PHP
+- **Databases**: MySQL
+- **IDE**: VSCode
 
-You can instantly start hacking on your site and view it at http://localhost:8080 after starting either the raw PHP serve mode or Apache 2, see below.
+### Database Structure:
+1. **Customer Table**: Maintains all customer details (e.g., name, email, current balance, etc.).
+2. **Transact Table**: Maintains all transaction details, including the transaction date and time.
 
-You can [manage your Codespaces](https://github.com/codespaces/) so you can stop the Codespaces when you stop your work and delete the Codespace when you have committed and pushed your code.
+### Task Requirements:
+Create a dynamic website with the following features:
+1. Dummy data for up to 10 customers.
+2. The Customer table contains basic customer details, and the Transact table records all transfers that occur, along with their date and time.
+3. Main Flow of the Website: 
+   - **Home Page** → View All Customers → Select and View a Customer → Send Money → Select Customer to Transfer to → View All Customers → View Transaction History.
 
-[LiveShare extension for VSCode](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) is also installed to make it possible for multiple users to hack on the same code at the same time.
+## Setting Up the Project in GitHub Codespaces
 
-## DevContainer PHP
+This project has been updated to work seamlessly in GitHub Codespaces, offering a convenient development environment. It utilizes PHP and MySQL to power the basic banking system. Below are the steps to set up and activate the project in GitHub Codespaces.
 
-Alternatively you can pull this code or take a release of this repo and run VSCode on top of these files to do the same locally. This requires VSCode and a local [Docker](https://www.docker.com/) installed.
+### Steps to Start the Project in GitHub Codespaces
 
-## Tips and Tricks
+1. **Creating the Codespace**:
+    Click the "Code" button, then select one of the two options: "Local" or "Codespaces." Choose "Codespaces" and click the "Create Codespace on Main" button to begin.
 
-### The DB: MariaDB
+3. **Starting the PHP Server**:
+   Once the Codespace environment is set up, launch the PHP server using the **Run & Debug** sidebar in VSCode:
+   - Choose `Launch My Site` to run the website without breakpoints.
+   - Choose `Debug My Site` to run the website with debugging enabled.
 
-All possible values are configured to be `mariadb` - Hostname, username, password and the database itself.
+   Alternatively, you can manually start Apache 2 in the terminal using `apache2-foreground` or `apache2ctl start`.
 
-### Starting the PHP Server
+4. **Database Access**:
+   The environment comes with a pre-configured MariaDB server. To access the database, use the built-in tool **Adminer**, available at [localhost:8082](http://localhost:8082).
 
-Launch it with the Run & Debug (shift+cmd+D) sidebar. There you can select either `Launch My Site` or `Debug My Site`. The first skips breakpoints in the code, the second doesn't.
+   Use the following credentials for the database:
+   - Hostname: mariadb
+   - Username: mariadb
+   - Password: mariadb
+   - Database: mariadb
 
-The PHP files are located beneath the [site](site) directory.
+5. **Importing Database Schema and Data**:
+   - The database schema and sample data are already set up. To import them, use the **SQLTools** extension in VSCode, which is pre-installed.
+   - Use the `>Tasks: Run Task` command in the Command Palette to apply the schema and data to your MariaDB instance.
 
-Apache 2 is also configured to point at the [site](site) directory. It can be started with `apache2-foreground` in the Code terminal or in the background with `apache2ctl start` if you don't care about logs. 
+6. **Viewing the Website**:
+   After the server is running, you can access the website at [http://localhost:8080](http://localhost:8080).
 
-### Adminer
-
-Should be available at [localhost:8082](http://localhost:8082).
-
-### Database schema and data dumps
-
-There is defined tasks for this. Press `shift+cmd+P` (Or `shift+ctrl+P` if you are on a not Mac or just the `F1` button) to get to the Command Palette. Type `>Tasks: Run Task` to get to `Save DB Schema` and `Save DB Data`. This will dump schema and data to the files `database/schema.sql` and `database/data_dump.sql` making the database portable. You should commit at least the `schema.sql` files to git. Your site will possible be prettier with some data as well.
-
-The dumps are as safe as possibly; There is no inserted `DROP TABLE` statements in the schema. So run explicit `drop_tables.sql` (And keep it manually updated with new tables) to clear tables in your database first if needed.
-
-### SQLTools
-
-The VS Code extension `SQLTools` is also installed and configured to use the build in MariaDB. There is a "storage" icon in the VSCode sidebar, where you can connect to the database (Just click trough the tree until there is a connection identified by a green marker in the tree and a 1 on the SQLTools icon in the sidebar). When connected you can open `.sql` files and do a `Run on Active Connection` to apply them. I.e. an easy way to import schema and data to the database.
-
-
+### Adminer Access:
+Adminer is available at [localhost:8082](http://localhost:8082) for managing the database, viewing tables, and performing operations.
